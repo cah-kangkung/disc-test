@@ -3,5 +3,6 @@
 }
 
 .bg-light {
+    background-color: transparent;
     border: none;
 }
