@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_authentication extends CI_Controller
+class User_auth extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->library('form_validation');
-        $this->load->model('User');
+        $this->load->model('User_model', 'User');
     }
 
     public function index()
@@ -16,11 +16,13 @@ class User_authentication extends CI_Controller
         if ($this->session->userdata('loggedIn')) {
             redirect('user_authentication/accessBlocked');
         }
+
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
-        if ($this->form_validation->run() == false && isset($_GET['code']) == false) {
-            $data['title'] = "Login Page";
-            $this->load->view('user_authentication/index_login', $data);
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = "Halaman Login";
+            $this->load->view('auth/index_login', $data);
         } else {
             // validation success
             $this->_login();
@@ -77,29 +79,37 @@ class User_authentication extends CI_Controller
         if ($this->session->userdata('loggedIn')) {
             redirect('user_authentication/accessBlocked');
         }
-        $this->form_validation->set_rules('firstName', 'First Name', 'required|trim');
-        $this->form_validation->set_rules('lastName', 'Last Name', 'required|trim');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[accounts.account_email]', [
-            'is_unique' => 'This email has already been registered'
+        $this->form_validation->set_rules('first_name', 'Nama Depan', 'required|trim', ['required' => 'Nama Depan harus diisi']);
+        $this->form_validation->set_rules('last_name', 'Nama Belakang', 'required|trim', ['required' => 'Nama Belakang harus diisi']);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
+            'required' => 'Email harus diisi',
+            'is_unique' => 'Email ini sudah terdaftar, gunakan email lain',
+            'valid_email' => 'Email harus menggunakan alamat yang valid'
         ]);
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
+            'required' => 'Password harus diisi',
+            'min_length' => 'Password minimal 6 karakter',
+            'matches' => 'Password harus sama'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', ['required' => 'Password harus diisi']);
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Registration Page';
-            $this->load->view('user_authentication/index_register', $data);
+            $data['title'] = 'Halaman Registrasi';
+            $this->load->view('auth/index_register', $data);
         } else {
             $email = $this->input->post('email', true);
             $data = [
-                'user_firstName' => htmlspecialchars($this->input->post('firstName', true)),
-                'user_lastName' => htmlspecialchars($this->input->post('lastName', true)),
-                'user_email' => htmlspecialchars($email),
-                'user_password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'user_image' => 'default.jpg',
-                'user_roles' => 1101,
-                'user_status' => 0,
-                'user_createdTime' => time()
+                'first_name' => htmlspecialchars($this->input->post('first_name', true)),
+                'last_name' => htmlspecialchars($this->input->post('last_name', true)),
+                'email' => htmlspecialchars($email),
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'image' => 'default.jpg',
+                'role_id' => 1102,
+                'is_active' => 1,
+                'date_created' => date('Y-m-d')
             ];
 
-            // preparing token
+            /* preparing token (CURRENTLY DISABLED)
             $token = base64_encode(random_bytes(32));
             $user_token = [
                 'email' => $email,
@@ -107,19 +117,19 @@ class User_authentication extends CI_Controller
                 'date_created' => time(),
             ];
 
-
-            $this->User->insert($data);
             $this->db->insert('user_token', $user_token);
 
-            // send email verification
-            $this->_sendEmail($token, 'verify');
+            send email verification
+            $this->_sendEmail($token, 'verify'); */
 
-            $this->session->set_flashdata('success_alert', 'Your Account has been created. Please check your email for activation');
-            redirect('user_authentication');
+            $this->User->insert($data);
+
+            $this->session->set_flashdata('success_alert', 'Akun anda telah berhasil dibuat, silahkan masuk');
+            redirect('user_auth');
         }
     }
 
-
+    /* CURRENTLY DISABLED
     private function _sendEmail($token, $type)
     {
         $this->load->library('email');
@@ -183,7 +193,7 @@ class User_authentication extends CI_Controller
             $this->session->set_flashdata('danger_alert', 'Account activation is failed!');
             redirect('user_authentication');
         }
-    }
+    } */
 
     public function logout()
     {

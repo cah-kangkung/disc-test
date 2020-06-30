@@ -34,6 +34,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Pricing</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?php echo site_url(); ?>user_auth">Login</a>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -1,3 +1,12 @@
+#auth-body {
+    background-color: #343A40;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .navbar {
     padding: 0.75rem 1rem;
 }
