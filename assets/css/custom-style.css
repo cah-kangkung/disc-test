@@ -1,5 +1,9 @@
 /* MOBILE FIRST */
 
+section {
+    margin: 4rem 0;
+}
+
 #auth-body {
     background-color: #343A40;
     height: 100vh;
