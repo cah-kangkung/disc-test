@@ -25,13 +25,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="<?php echo site_url(); ?>home">BERANDA <span class="sr-only">(current)</span></a>
+                        <li class="nav-item <?php echo ($this->uri->segment(1) == 'home' ? 'active' : ''); ?>">
+                            <a class="nav-link" href="<?php echo site_url(); ?>home">BERANDA</span></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item <?php echo ($this->uri->segment(1) == 'disc' ? 'active' : ''); ?>">
                             <a class="nav-link" href="<?php echo site_url(); ?>disc">DISC</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item <?php echo ($this->uri->segment(1) == 'pricing' ? 'active' : ''); ?>">
                             <a class="nav-link" href="<?php echo site_url(); ?>pricing">TEST</a>
                         </li>
                         <li class="nav-item">

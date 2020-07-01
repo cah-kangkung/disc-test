@@ -25,21 +25,21 @@
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="<?php echo site_url(); ?>home">BERANDA <span class="sr-only">(current)</span></a>
+                        <li class="nav-item <?php echo ($this->uri->segment(1) == 'home' ? 'active' : ''); ?>">
+                            <a class="nav-link" href="<?php echo site_url(); ?>home">BERANDA</span></a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item <?php echo ($this->uri->segment(1) == 'disc' ? 'active' : ''); ?>">
                             <a class="nav-link" href="<?php echo site_url(); ?>disc">DISC</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url(); ?>pricing  ">TEST</a>
+                        <li class="nav-item <?php echo ($this->uri->segment(1) == 'pricing' ? 'active' : ''); ?>">
+                            <a class="nav-link" href="<?php echo site_url(); ?>pricing">TEST</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                 <img src="<?php echo base_url(); ?>assets/img/profile-pictures/<?php echo $user_data['image']; ?>" width="30" height="30" class="align-center rounded-circle" alt="">
                             </a>
-                            <div class="dropdown-menu" style="">
-                                <a class="dropdown-item" href="#">Profile</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="<?php echo site_url(); ?>profile">Profile</a>
                                 <a class="dropdown-item" href="#">Laporan</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?php echo site_url(); ?>user_auth/logout">Keluar</a>
