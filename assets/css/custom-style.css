@@ -1,3 +1,5 @@
+/* MOBILE FIRST */
+
 #auth-body {
     background-color: #343A40;
     height: 100vh;
@@ -11,7 +13,9 @@
     padding: 0.75rem 1rem;
 }
 
-.bg-light {
-    background-color: transparent;
-    border: none;
+.nav-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-right: 1.9rem;
 }

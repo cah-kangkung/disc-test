@@ -26,13 +26,13 @@
                 <div class="collapse navbar-collapse" id="navbarColor03">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="<?php echo site_url(); ?>home">BERANDA <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="<?php echo site_url(); ?>disc">DISC</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="<?php echo site_url(); ?>pricing">TEST</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo site_url(); ?>user_auth">Login</a>

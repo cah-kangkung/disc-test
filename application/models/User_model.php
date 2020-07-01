@@ -11,7 +11,7 @@ class User_model extends CI_Model
 
     public function getUserData($email)
     {
-        return $this->db->query("SELECT * FROM view_users WHERE `E-mail` = '$email'")->row_array();
+        return $this->db->query("SELECT * FROM user WHERE `email` = '$email'")->row_array();
     }
 
     public function updateUserData($email, $firstName, $lastName, $gender, $locale, $phone, $image)

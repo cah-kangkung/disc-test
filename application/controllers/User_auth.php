@@ -14,11 +14,14 @@ class User_auth extends CI_Controller
     public function index()
     {
         if ($this->session->userdata('loggedIn')) {
-            redirect('user_authentication/accessBlocked');
+            redirect('user_auth/accessBlocked');
         }
 
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email', [
+            'required' => 'Email harus diisi',
+            'valid_email' => 'Email harus menggunakan alamat yang valid'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required|trim', ['required' => 'Password harus diisi']);
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Halaman Login";
@@ -41,36 +44,32 @@ class User_auth extends CI_Controller
         // check wether user is existed or not
         if ($user) {
             // check wether user is activated or not
-            if ($user['status'] == 1) {
+            if ($user['is_active'] == 1) {
                 // password check
                 if (password_verify($password, $user['password'])) {
                     $data = [
-                        'user_email' => $user['E-mail'],
-                        'user_role' => $user['role']
+                        'user_email' => $user['email'],
+                        'user_role' => $user['role_id']
                     ];
                     $this->session->set_userdata($data);
                     $this->session->set_userdata('loggedIn', true);
 
-                    if ($user['role'] == 1101 or $user['role'] == 1102) {
+                    if ($user['role_id'] == 1101) {
+                        redirect('admin_dashboard');
+                    } elseif ($user['role_id'] == 1102) {
                         redirect('home');
                     }
-                    if ($user['role'] == 1103) {
-                        redirect('admin');
-                    }
-                    if ($user['role'] == 1111) {
-                        redirect('super_admin');
-                    }
                 } else {
-                    $this->session->set_flashdata('danger_alert', 'Wrong password!');
-                    redirect('user_authentication');
+                    $this->session->set_flashdata('danger_alert', 'Password salah!');
+                    redirect('user_auth');
                 }
             } else {
-                $this->session->set_flashdata('danger_alert', 'Email has not been activated');
-                redirect('user_authentication');
+                $this->session->set_flashdata('danger_alert', 'Email belum di aktivasi');
+                redirect('user_auth');
             }
         } else {
-            $this->session->set_flashdata('danger_alert', 'Email has not been registered');
-            redirect('user_authentication');
+            $this->session->set_flashdata('danger_alert', 'Email belum di registrasi');
+            redirect('user_auth');
         }
     }
 
