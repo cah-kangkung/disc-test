@@ -16,6 +16,11 @@
 <body>
 
     <head>
+        <?php if ($user_data['is_completed'] == 0) : ?>
+            <div class="" style="display: flex; width: 100%; color: black; background-color: yellowgreen; justify-content: center; align-items: center; text-align: center; padding: 0.5rem;">
+                <small class="m-0">Profil anda belum lengkap. Segera lengkapi profil anda untuk bisa mengikuti tes! <a href="<?php echo site_url(); ?>profile" style="color: blue; text-decoration: underline;">lengkapi</a></small>
+            </div>
+        <?php endif; ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo site_url(); ?>home">PSIKOLOGI STAR</a>

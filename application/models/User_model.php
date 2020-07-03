@@ -16,12 +16,15 @@ class User_model extends CI_Model
 
     public function updateUserData($new_data = array())
     {
-        $first_name = $new_data['first_name'];
-        $last_name = $new_data['last_name'];
+        $full_name = $new_data['full_name'];
         $email = $new_data['email'];
+        $no_hp = $new_data['no_hp'];
+        $birth = $new_data['birth'];
+        $sex = $new_data['sex'];
+        $is_completed = 1;
         $image = $new_data['image'];
 
-        $query = "UPDATE user SET `first_name` = '$first_name', `last_name` = '$last_name', `image` = '$image' WHERE `email` = '$email'";
+        $query = "UPDATE user SET `full_name` = '$full_name', `no_hp` = '$no_hp', `birth` = '$birth', `sex` = '$sex', `is_completed` = $is_completed , `image` = '$image' WHERE `email` = '$email'";
         return $this->db->query($query);
     }
 

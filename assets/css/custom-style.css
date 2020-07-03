@@ -23,3 +23,9 @@ section {
     text-align: center;
     margin-right: 1.9rem;
 }
+
+.dropdown-menu {
+    margin-top: 0.73rem;
+    left: unset;
+    right: 0;
+}

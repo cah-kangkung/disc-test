@@ -100,9 +100,13 @@ class User_auth extends CI_Controller
                 'full_name' => htmlspecialchars($this->input->post('full_name', true)),
                 'email' => htmlspecialchars($email),
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
+                'no_hp' => null,
+                'birth' => null,
+                'sex' => null,
                 'image' => 'default.jpg',
                 'role_id' => 1102,
                 'is_active' => 0,
+                'is_completed' => 0,
                 'date_created' => date('Y-m-d')
             ];
 

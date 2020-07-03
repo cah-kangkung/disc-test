@@ -35,23 +35,44 @@
                 <h4>Information</h4>
                 <hr>
                 <div class="form-group row">
-                    <label for="first_name" class="col-xl-2 col-form-label">First Name</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo $user_data['first_name'] ?>">
-                        <?php echo form_error('first_name', '<small class="text-danger pl-2">', '</small>'); ?>
+                    <label for="full_name" class="col-xl-3 col-form-label">Nama Lengkap</label>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control" id="full_name" name="full_name" value="<?php echo $user_data['full_name'] ?>">
+                        <?php echo form_error('full_name', '<small class="text-danger pl-2">', '</small>'); ?>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="last_name" class="col-xl-2 col-form-label">Last Name</label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $user_data['last_name'] ?>">
-                        <?php echo form_error('last_name', '<small class="text-danger pl-2">', '</small>'); ?>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="email" class="col-xl-2 col-form-label">Email</label>
-                    <div class="col-lg-10">
+                    <label for="email" class="col-xl-3 col-form-label">Email</label>
+                    <div class="col-lg-9">
                         <input type="text" class="form-control" id="email" name="email" value="<?php echo $user_data['email'] ?>" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="no_hp" class="col-xl-3 col-form-label">Nomor Seluler</label>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="+62....." value="<?php echo $user_data['no_hp'] ?>">
+                        <?php echo form_error('no_hp', '<small class="text-danger pl-2">', '</small>'); ?>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="birth" class="col-xl-3 col-form-label">Tanggal Lahir</label>
+                    <div class="col-lg-9">
+                        <input type="date" class="form-control" id="birth" name="birth" value="<?php echo $user_data['birth'] ?>">
+                        <?php echo form_error('birth', '<small class="text-danger pl-2">', '</small>'); ?>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="sex" class="col-xl-3 col-form-label">Jenis Kelamin</label>
+                    <div class="col-lg-9">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="sex" name="sex" class="custom-control-input" <?php echo ($user_data['sex'] == 'laki-laki' ? 'checked=""' : '') ?> value="laki-laki">
+                            <label class="custom-control-label" for="sex">Laki-laki</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="sex2" name="sex" class="custom-control-input" <?php echo ($user_data['sex'] == 'perempuan' ? 'checked=""' : '') ?> value="perempuan">
+                            <label class="custom-control-label" for="sex2">Perempuan</label>
+                        </div>
+                        <?php echo form_error('sex', '<small class="text-danger pl-2">', '</small>'); ?>
                     </div>
                 </div>
 

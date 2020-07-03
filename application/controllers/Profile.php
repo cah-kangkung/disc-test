@@ -22,8 +22,10 @@ class Profile extends CI_Controller
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
 
-            $this->form_validation->set_rules('first_name', 'Nama Depan', 'required|trim', ['required' => 'Nama depan harus diisi']);
-            $this->form_validation->set_rules('last_name', 'Nama Belakang', 'required|trim', ['required' => 'Nama belakang harus diisi']);
+            $this->form_validation->set_rules('full_name', 'Nama Lengkap', 'required|trim', ['required' => 'Nama Lengkap harus diisi']);
+            $this->form_validation->set_rules('no_hp', 'Nomor Seluler', 'required|trim|numeric', ['required' => 'Nomor Seluler harus diisi']);
+            $this->form_validation->set_rules('birth', 'Tanggal Lahir', 'required|trim', ['required' => 'Tanggal lahir harus diisi']);
+            $this->form_validation->set_rules('sex', 'Jenis Kelamin', 'required|trim', ['required' => 'Jenis kelamin harus diisi']);
 
             if ($this->form_validation->run() == false) {
                 $this->load->view('templates/user_header_two', $data);
@@ -31,9 +33,11 @@ class Profile extends CI_Controller
                 $this->load->view('templates/user_footer');
             } else {
                 $data['new_data'] = [
-                    'first_name' => htmlspecialchars($this->input->post('first_name', true)),
-                    'last_name' => htmlspecialchars($this->input->post('last_name', true)),
+                    'full_name' => htmlspecialchars($this->input->post('full_name', true)),
                     'email' => $this->input->post('email'),
+                    'no_hp' => $this->input->post('no_hp'),
+                    'birth' => $this->input->post('birth'),
+                    'sex' => $this->input->post('sex')
                 ];
 
                 // checking if there is a picture to be uploaded
@@ -55,7 +59,6 @@ class Profile extends CI_Controller
                         echo $this->upload->diplay_errors();
                     }
                 } else {
-
                     $data['new_data']['image'] = $old_image;
                 }
 

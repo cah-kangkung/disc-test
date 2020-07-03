@@ -26,7 +26,7 @@
                                 <h1 class="h4 text-gray-900 mb-4">Buat Akun</h1>
                             </div>
                             <form class="user" method="post" action="<?php echo site_url(); ?>user_auth/register">
-                                <div class="form-group text-left row">
+                                <div class="form-group text-left">
                                     <input type="text" class="form-control form-control-user" id="full_name" name="full_name" placeholder="Nama Lengkap" value="<?php echo set_value('full_name'); ?>">
                                     <?php echo form_error('full_name', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
