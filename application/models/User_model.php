@@ -25,8 +25,35 @@ class User_model extends CI_Model
         return $this->db->query($query);
     }
 
+    public function activateUser($email)
+    {
+        $query = "UPDATE user SET `is_active` = 1 WHERE `email` = '$email'";
+        return $this->db->query($query);
+    }
+
+    public function deleteUser($email)
+    {
+        $query = "DELETE FROM user WHERE `email` = '$email'";
+        return $this->db->query($query);
+    }
+
     public function updatePassword($email, $password)
     {
         return $this->db->query("UPDATE user SET `password` = '$password' WHERE `email` = '$email'");
+    }
+
+    public function insertToken($user_token)
+    {
+        return $this->db->insert('user_token', $user_token);
+    }
+
+    public function getUserToken($token)
+    {
+        return $this->db->get_where('user_token', ['token' => $token])->row_array();
+    }
+
+    public function deleteUserToken($email)
+    {
+        return $this->db->delete('user_token', ['email' => $email]);
     }
 }

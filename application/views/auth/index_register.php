@@ -27,14 +27,8 @@
                             </div>
                             <form class="user" method="post" action="<?php echo site_url(); ?>user_auth/register">
                                 <div class="form-group text-left row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="first_name" name="first_name" placeholder="Nama Depan" value="<?php echo set_value('first_name'); ?>">
-                                        <?php echo form_error('first_name', '<small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="last_name" name="last_name" placeholder="Nama Belakang" value="<?php echo set_value('last_name'); ?>">
-                                        <?php echo form_error('last_name', '<small class="text-danger pl-3">', '</small>'); ?>
-                                    </div>
+                                    <input type="text" class="form-control form-control-user" id="full_name" name="full_name" placeholder="Nama Lengkap" value="<?php echo set_value('full_name'); ?>">
+                                    <?php echo form_error('full_name', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                                 <div class="form-group text-left">
                                     <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Email" value="<?php echo set_value('email'); ?>">
@@ -55,7 +49,7 @@
                                 <hr>
                             </form>
                             <div class="text-center">
-                                <a class="small" href="">Lupa Password?</a>
+                                <a class="small" href="<?php echo site_url(); ?>user_auth/forgot_password">Lupa Password?</a>
                             </div>
                             <div class="text-center">
                                 <a class="small" href="<?php echo site_url(); ?>user_auth/">Sudah punya akun? masuk...</a>

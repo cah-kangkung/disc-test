@@ -43,29 +43,19 @@
                                         </div>
                                     <?php endif; ?>
 
-                                    <form class="user" method="post" action="<?php echo site_url(); ?>user_auth">
+                                    <form class="user" method="post" action="<?php echo site_url(); ?>user_auth/change_password">
                                         <div class="form-group text-left">
-                                            <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukan Alamat Email..." value="<?php echo set_value('email'); ?>">
-                                            <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                                            <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password Baru">
+                                            <?php echo form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                         <div class="form-group text-left">
-                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
-                                            <?php echo form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                                            <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Ulangi Password">
+                                            <?php echo form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-custom btn-block">
-                                            Masuk
+                                            Reset Password
                                         </button>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="<?php echo site_url(); ?>user_auth/register">Buat akun</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="<?php echo site_url(); ?>user_auth/forgot_password">Lupa Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="<?php echo site_url(); ?>home">Kembali ke beranda</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
