@@ -11,7 +11,7 @@ class Pricing extends CI_Controller
             $this->load->view('templates/user_footer');
         } else {
             if ($this->session->userdata('user_role') == 1101) {
-                redirect('admin');
+                redirect('admin_dashboard');
             }
 
             $this->load->model('User_model', 'User');

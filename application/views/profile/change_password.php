@@ -1,7 +1,7 @@
 <section>
     <div class="container">
 
-        <h2 class="mb-5">Change Password</h2>
+        <h2 class="mb-5">Ubah password</h2>
 
         <?php if ($this->session->flashdata('success_alert')) : ?>
             <div class="alert alert-success mt-3" role="alert">

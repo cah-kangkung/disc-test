@@ -45,7 +45,7 @@
 
                                     <form class="user" method="post" action="<?php echo site_url(); ?>user_auth">
                                         <div class="form-group text-left">
-                                            <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukan Alamat Email..." value="<?php echo set_value('email'); ?>">
+                                            <input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Masukan Alamat Email..." value="<?php echo set_value('email'); ?>" autofocus>
                                             <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                         <div class="form-group text-left">

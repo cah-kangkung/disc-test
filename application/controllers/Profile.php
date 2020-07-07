@@ -16,7 +16,7 @@ class Profile extends CI_Controller
             redirect('user_authentication');
         } else {
             if ($this->session->userdata('user_role') == 1101) {
-                redirect('admin');
+                redirect('admin_dashboard');
             }
             // get all user information from the database
             $email = $this->session->userdata('user_email');
@@ -76,7 +76,7 @@ class Profile extends CI_Controller
             redirect('user_auth');
         } else {
             if ($this->session->userdata('user_role') == 1101) {
-                redirect('admin');
+                redirect('admin_dashboard');
             }
             // get all user information from the database
             $email = $this->session->userdata('user_email');
