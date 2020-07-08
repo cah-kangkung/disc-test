@@ -17,6 +17,7 @@ class Admin_dashboard extends CI_Controller
             // get all user information from the database
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
+            $data['total_user'] = $this->User->countUser();
             $data['title'] = 'Halaman Dashboard';
 
             $this->load->view('templates/admin_headbar', $data);

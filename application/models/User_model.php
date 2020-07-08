@@ -14,6 +14,11 @@ class User_model extends CI_Model
         return $this->db->query("SELECT * FROM user WHERE `email` = '$email'")->row_array();
     }
 
+    public function countUser()
+    {
+        return $this->db->count_all('user');
+    }
+
     public function updateUserData($new_data = array())
     {
         $full_name = $new_data['full_name'];

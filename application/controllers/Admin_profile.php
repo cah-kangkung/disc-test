@@ -21,6 +21,7 @@ class Admin_profile extends CI_Controller
             // get all user information from the database
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
+            $data['title'] = 'Halaman Profil Admin';
 
             $this->form_validation->set_rules('full_name', 'Nama Lengkap', 'required|trim', ['required' => 'Nama Lengkap harus diisi']);
             $this->form_validation->set_rules('no_hp', 'Nomor Seluler', 'required|trim|numeric', ['required' => 'Nomor Seluler harus diisi']);
@@ -83,6 +84,7 @@ class Admin_profile extends CI_Controller
             // get all user information from the database
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
+            $data['title'] = 'Halaman Ubah Password';
 
             $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim', ['required' => 'Masukan password lama']);
             $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[6]|matches[new_password2]', [

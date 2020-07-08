@@ -3,17 +3,23 @@
 
         <h2 class="mb-5">Edit Profile</h2>
 
-        <?php if ($this->session->flashdata('danger_alert')) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $this->session->flashdata('danger_alert'); ?>
-            </div>
-        <?php endif; ?>
+        <div class="row">
+            <div class="col-lg-8">
+                <?php if ($this->session->flashdata('danger_alert')) : ?>
+                    <div class="alert alert-dismissible alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <?php echo $this->session->flashdata('danger_alert'); ?>
+                    </div>
+                <?php endif; ?>
 
-        <?php if ($this->session->flashdata('success_alert')) : ?>
-            <div class="alert alert-success" role="alert">
-                <?php echo $this->session->flashdata('success_alert'); ?>
+                <?php if ($this->session->flashdata('success_alert')) : ?>
+                    <div class="alert alert-dismissible alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <?php echo $this->session->flashdata('success_alert'); ?>
+                    </div>
+                <?php endif; ?>
             </div>
-        <?php endif; ?>
+        </div>
 
         <div class="row">
             <div class="col-lg-8">
