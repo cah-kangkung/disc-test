@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item <?php echo ($this->uri->segment(1) == 'admin_dashboard' ? 'active' : ''); ?>">
         <a class="nav-link" href="<?php echo site_url(); ?>admin_dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -28,14 +28,14 @@
     </div>
 
     <!-- Nav Item - My Profile -->
-    <li class="nav-item">
-        <a class="nav-link" href="">
+    <li class="nav-item <?php echo ($this->uri->segment(1) == 'admin_profile' ? 'active' : ''); ?>">
+        <a class="nav-link" href="<?php echo site_url(); ?>admin_profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profil Saya</span></a>
     </li>
 
     <!-- Nav Item - Users -->
-    <li class="nav-item">
+    <li class="nav-item <?php echo ($this->uri->segment(1) == 'list_user' ? 'active' : ''); ?>">
         <a class="nav-link" href="">
             <i class="fas fa-fw fa-users"></i>
             <span>User Web</span></a>
@@ -51,14 +51,14 @@
 
 
     <!-- Nav Item - Test Question -->
-    <li class="nav-item">
+    <li class="nav-item <?php echo ($this->uri->segment(1) == 'admin_test' ? 'active' : ''); ?>">
         <a class="nav-link" href="<?php echo site_url(); ?>admin_test">
             <i class="fas fa-fw fa-question"></i>
             <span>Soal</span></a>
     </li>
 
     <!-- Nav Item - Payment Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item <?php echo ($this->uri->segment(1) == 'payment' ? 'active' : ''); ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="far fa-fw fa-credit-card"></i>
             <span>Pembayaran</span>

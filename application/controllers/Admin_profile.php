@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profile extends CI_Controller
+class Admin_profile extends CI_Controller
 {
     public function __construct()
     {
@@ -15,8 +15,8 @@ class Profile extends CI_Controller
         if (!$this->session->userdata('loggedIn')) {
             redirect('user_auth');
         } else {
-            if ($this->session->userdata('user_role') == 1101) {
-                redirect('admin_dashboard');
+            if ($this->session->userdata('user_role') == 1102) {
+                redirect('home');
             }
             // get all user information from the database
             $email = $this->session->userdata('user_email');
@@ -28,9 +28,11 @@ class Profile extends CI_Controller
             $this->form_validation->set_rules('sex', 'Jenis Kelamin', 'required|trim', ['required' => 'Jenis kelamin harus diisi']);
 
             if ($this->form_validation->run() == false) {
-                $this->load->view('templates/user_header_two', $data);
-                $this->load->view('profile/index');
-                $this->load->view('templates/user_footer');
+                $this->load->view('templates/admin_headbar', $data);
+                $this->load->view('templates/admin_sidebar');
+                $this->load->view('templates/admin_topbar');
+                $this->load->view('admin_profile/index');
+                $this->load->view('templates/admin_footer');
             } else {
                 $data['new_data'] = [
                     'full_name' => htmlspecialchars($this->input->post('full_name', true)),
@@ -64,8 +66,8 @@ class Profile extends CI_Controller
 
                 $this->User->updateUserData($data['new_data']);
 
-                $this->session->set_flashdata('success_alert', 'Your profile have been update!');
-                redirect('profile');
+                $this->session->set_flashdata('success_alert', 'Profil berhasil diubah!');
+                redirect('admin_profile');
             }
         }
     }
@@ -75,8 +77,8 @@ class Profile extends CI_Controller
         if (!$this->session->userdata('loggedIn')) {
             redirect('user_auth');
         } else {
-            if ($this->session->userdata('user_role') == 1101) {
-                redirect('admin_dashboard');
+            if ($this->session->userdata('user_role') == 1102) {
+                redirect('home');
             }
             // get all user information from the database
             $email = $this->session->userdata('user_email');
@@ -94,20 +96,22 @@ class Profile extends CI_Controller
             ]);
 
             if ($this->form_validation->run() == false) {
-                $this->load->view('templates/user_header_two', $data);
-                $this->load->view('profile/change_password');
-                $this->load->view('templates/user_footer');
+                $this->load->view('templates/admin_headbar', $data);
+                $this->load->view('templates/admin_sidebar');
+                $this->load->view('templates/admin_topbar');
+                $this->load->view('admin_profile/change_password');
+                $this->load->view('templates/admin_footer');
             } else {
                 $current_password = $this->input->post('current_password');
                 $new_password = $this->input->post('new_password1');
 
                 if (!password_verify($current_password, $data['user_data']['password'])) {
                     $this->session->set_flashdata('danger_alert', 'Password lama salah!');
-                    redirect('profile/change_password');
+                    redirect('admin_profile/change_password');
                 } else {
                     if ($current_password == $new_password) {
                         $this->session->set_flashdata('danger_alert', "Password baru tidak boleh sama dengan passorw lama");
-                        redirect('profile/change_password');
+                        redirect('admin_profile/change_password');
                     } else {
                         // password sudah mantab
                         $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
@@ -115,7 +119,7 @@ class Profile extends CI_Controller
                         $this->User->updatePassword($email, $password_hash);
 
                         $this->session->set_flashdata('success_alert', "Password telah berhasil diubah");
-                        redirect('profile');
+                        redirect('admin_profile');
                     }
                 }
             }
