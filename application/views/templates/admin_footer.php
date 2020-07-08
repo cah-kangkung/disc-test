@@ -32,7 +32,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="<?php echo site_url(); ?>user_auth/logout">Logout</a>
             </div>
         </div>
     </div>
@@ -47,6 +47,18 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?php echo base_url(); ?>assets/js/sb-admin-2.min.js"></script>
+
+<!-- DataTables plugins -->
+<script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- DataTables custom scripts -->
+<script>
+    // Call the dataTables jQuery plugin
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+</script>
 
 </body>
 

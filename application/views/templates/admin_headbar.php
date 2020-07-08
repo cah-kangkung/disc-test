@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title><?php echo $title; ?></title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url(); ?>assets/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,6 +17,9 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles datables -->
+    <link href="<?php echo base_url(); ?>assets/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
