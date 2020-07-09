@@ -15,10 +15,12 @@ class Pricing extends CI_Controller
             }
 
             $this->load->model('User_model', 'User');
+            $this->load->model('Active_test_model', 'Active_test');
 
             // get all user information from the database
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
+            $data['active_test'] = $this->Active_test->getActiveTest($data['user_data']['user_id']);
 
             $this->load->view('templates/user_header_two', $data);
             $this->load->view('pricing/index');
