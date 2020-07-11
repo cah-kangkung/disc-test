@@ -4,6 +4,10 @@ section {
     margin: 4rem 0;
 }
 
+strong {
+    font-weight: bold;
+}
+
 #auth-body {
     background-color: #343A40;
     height: 100vh;
@@ -28,4 +32,8 @@ section {
     margin-top: 0.73rem;
     left: unset;
     right: 0;
+}
+
+.checkout-form {
+    border-left: solid 1px black;
 }

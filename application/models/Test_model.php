@@ -3,6 +3,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Test_model extends CI_Model
 {
+    public function getAllTest()
+    {
+        return $this->db->query("SELECT * FROM test")->result_array();
+    }
+
+    public function getTestByID($test_id)
+    {
+        return $this->db->query("SELECT * FROM test WHERE `test_id` = $test_id")->row_array();
+    }
+
+    public function addTest($data = array())
+    {
+        null;
+    }
+
+    public function udpateTest($data = array())
+    {
+        null;
+    }
+
+    public function deleteTest($data = array())
+    {
+        null;
+    }
 
     public function insertQuestion($data = array())
     {

@@ -96,6 +96,7 @@ class User_auth extends CI_Controller
             $this->load->view('auth/index_register', $data);
         } else {
             $email = $this->input->post('email', true);
+            date_default_timezone_set("Asia/Jakarta");
             $data = [
                 'full_name' => htmlspecialchars($this->input->post('full_name', true)),
                 'email' => htmlspecialchars($email),
@@ -188,6 +189,15 @@ class User_auth extends CI_Controller
                 if (time() - $user_token['date_created'] < (60 * 60)) {
                     $this->User->activateUser($email);
                     $this->User->deleteUserToken($email);
+
+                    $this->load->model('Active_test_model', 'Active_test');
+                    $data['active_user'] = [
+                        'user_id' => $user['user_id'],
+                        'time_start' => null,
+                        'time_end' => null,
+                        'status' => 0,
+                    ];
+                    $this->Active_test->insertActiveTest($data['active_user']);
 
                     $this->session->set_flashdata('success_alert', $email . ' berhasil diaktivasi, silahkan masuk');
                     redirect('user_auth');

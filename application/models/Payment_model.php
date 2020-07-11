@@ -19,6 +19,17 @@ class Payment_model extends CI_Model
         return $this->db->query("SELECT * FROM payment WHERE `payment_id` = $payment_id")->row_array();
     }
 
+    public function getPaymentByUser($user_id, $status = '')
+    {
+        $query = "";
+        if ($status == '') {
+            $query = "SELECT * FROM payment WHERE `user_id` = $user_id ORDER BY `date_created` DESC";
+        } else {
+            $query = "SELECT * FROM payment WHERE `user_id` = $user_id AND `status` = $status ORDER BY `date_created` DESC";
+        }
+        return $this->db->query($query)->result_array();
+    }
+
     public function editSenderBank($new_data = array())
     {
         $bank = $new_data['bank'];
@@ -29,8 +40,19 @@ class Payment_model extends CI_Model
         return $this->db->query($query);
     }
 
-    public function updateStatus($type, $payment_id)
+    public function updateStatus($type, $payment_id, $user_id)
     {
+        $query1 = '';
+        $query2 = '';
+        if ($type == 'cancel') {
+            $query1 = "UPDATE payment SET `status` = 0 WHERE `payment_id` = $payment_id";
+            $query2 = "UPDATE active_test SET `status` = 0 WHERE `user_id` = $user_id";
+        }
+
+        $this->db->trans_start();
+        $this->db->query($query1);
+        $this->db->query($query2);
+        $this->db->trans_complete();
     }
 
     public function deletePayment($payment_id)
