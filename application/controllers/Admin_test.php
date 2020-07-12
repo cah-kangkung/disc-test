@@ -24,6 +24,7 @@ class Admin_test extends CI_Controller
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
             $data['questions'] = $this->Test->getAllQuestion();
+            $data['count_questions'] = count($data['questions']);
             $data['title'] = "Halaman Soal";
 
             $this->load->view('templates/admin_headbar', $data);
@@ -47,10 +48,12 @@ class Admin_test extends CI_Controller
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
 
+            $data['count'] = $_GET['count_questions'];
+
             $this->form_validation->set_rules('influence', 'Influence', 'required|trim', ['required' => 'Influence harus diisi']);
-            $this->form_validation->set_rules('dominant', 'Dominant', 'required|trim', ['required' => 'Dominant harus diisi']);
-            $this->form_validation->set_rules('correct', 'Correct', 'required|trim', ['required' => 'Correct harus diisi']);
-            $this->form_validation->set_rules('stable', 'Stable', 'required|trim', ['required' => 'Stable harus diisi']);
+            $this->form_validation->set_rules('dominance', 'Dominance', 'required|trim', ['required' => 'Dominance harus diisi']);
+            $this->form_validation->set_rules('compliance', 'Compliance', 'required|trim', ['required' => 'Compliance harus diisi']);
+            $this->form_validation->set_rules('steadiness', 'Steadiness', 'required|trim', ['required' => 'Steadiness harus diisi']);
 
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Halaman Tambah Soal";
@@ -62,9 +65,9 @@ class Admin_test extends CI_Controller
             } else {
                 $data['question'] = [
                     'influence' => $this->input->post('influence'),
-                    'dominant' => $this->input->post('dominant'),
-                    'correct' => $this->input->post('correct'),
-                    'stable' => $this->input->post('stable'),
+                    'dominance' => $this->input->post('dominance'),
+                    'compliance' => $this->input->post('compliance'),
+                    'steadiness' => $this->input->post('steadiness'),
                 ];
 
                 $this->Test->insertQuestion($data['question']);
@@ -90,9 +93,9 @@ class Admin_test extends CI_Controller
             $data['question'] = $this->Test->getQuestionByID($id);
 
             $this->form_validation->set_rules('influence', 'Influence', 'required|trim', ['required' => 'Influence harus diisi']);
-            $this->form_validation->set_rules('dominant', 'Dominant', 'required|trim', ['required' => 'Dominant harus diisi']);
-            $this->form_validation->set_rules('correct', 'Correct', 'required|trim', ['required' => 'Correct harus diisi']);
-            $this->form_validation->set_rules('stable', 'Stable', 'required|trim', ['required' => 'Stable harus diisi']);
+            $this->form_validation->set_rules('dominance', 'Dominance', 'required|trim', ['required' => 'Dominance harus diisi']);
+            $this->form_validation->set_rules('compliance', 'Compliance', 'required|trim', ['required' => 'Compliance harus diisi']);
+            $this->form_validation->set_rules('steadiness', 'Steadiness', 'required|trim', ['required' => 'Steadiness harus diisi']);
 
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Halaman Tambah Soal";
@@ -104,9 +107,9 @@ class Admin_test extends CI_Controller
             } else {
                 $data['new_question'] = [
                     'influence' => $this->input->post('influence'),
-                    'dominant' => $this->input->post('dominant'),
-                    'correct' => $this->input->post('correct'),
-                    'stable' => $this->input->post('stable'),
+                    'dominance' => $this->input->post('dominance'),
+                    'compliance' => $this->input->post('compliance'),
+                    'steadiness' => $this->input->post('steadiness'),
                     'id' => (int) $id
                 ];
 

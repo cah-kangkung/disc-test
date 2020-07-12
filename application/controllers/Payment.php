@@ -14,7 +14,7 @@ class Payment extends CI_Controller
         $this->load->model('Payment_method_model', 'Payment_method');
     }
 
-    public function list_payment($payment_status)
+    public function order_list()
     {
         if (!$this->session->userdata('loggedIn')) {
             redirect('user_auth');
@@ -27,7 +27,22 @@ class Payment extends CI_Controller
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
 
-            $data['payment_list'] = $this->Payment->getPaymentByUser($data['user_data']['user_id'], $payment_status);
+            // get filter from url
+            $user_id = $data['user_data']['user_id'];
+            $payment_status = $this->input->get('filter');
+            // $search_filter = $this->input->get('search'); # NOT YET IMPLEMENT
+
+            // Preparing pagination config
+            $this->load->library('pagination');
+
+            $config['total_rows'] = $this->Payment->countUserPayment($user_id, $payment_status);
+            $config['per_page'] = 4;
+
+            $this->pagination->initialize($config);
+
+            $data['offset'] = $this->uri->segment(3);
+            $data['payment_list'] = $this->Payment->getPaymentByUser($user_id, $payment_status, $config['per_page'], $data['offset']);
+            $data['count'] = $config['total_rows'];
 
             $this->load->view('templates/user_header_two', $data);
             $this->load->view('payment/list_payment');
@@ -53,7 +68,7 @@ class Payment extends CI_Controller
             $active_test = $this->Active_test->getActiveTest($data['user_data']['user_id']);
             $active_status = $active_test['status'];
             if ($active_status != 0) {
-                redirect('payment');
+                redirect('payment/order_list');
             }
 
             // all the necessary data about make payment
@@ -108,7 +123,13 @@ class Payment extends CI_Controller
                 $user_id = $data['user_data']['user_id'];
                 $this->Active_test->updateStatus($user_id, 1);
 
-                redirect('payment');
+                // PUSHER TRIGGER
+                $pusher = new Pusher\Pusher("97e23ed5d522856f8f11", "bf7dfd9b59003270d753", "1037064", array('cluster' => 'ap1'));
+
+                $data['message'] = 'check-out success';
+                $pusher->trigger('my-channel', 'my-event', $data);
+
+                redirect('payment/order_list');
             }
         }
     }
@@ -123,7 +144,7 @@ class Payment extends CI_Controller
         ];
 
         $this->Payment->editSenderBank($data['new_data']);
-        redirect('payment');
+        redirect('payment/order_list');
     }
 
     public function cancel_payment()
@@ -132,6 +153,6 @@ class Payment extends CI_Controller
         $user_id = $_GET['user_id'];
 
         $this->Payment->updateStatus('cancel', $payment_id, $user_id);
-        redirect('payment');
+        redirect('payment/order_list');
     }
 }

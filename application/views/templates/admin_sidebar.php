@@ -28,15 +28,15 @@
     </div>
 
     <!-- Nav Item - My Profile -->
-    <li class="nav-item <?php echo ($this->uri->segment(1) == 'admin_profile' ? 'active' : ''); ?>">
-        <a class="nav-link" href="<?php echo site_url(); ?>admin_profile">
+    <li class="nav-item <?php echo ($this->uri->segment(2) == 'profile' ? 'active' : ''); ?>">
+        <a class="nav-link" href="<?php echo site_url(); ?>admin_user/profile">
             <i class="fas fa-fw fa-user"></i>
             <span>Profil Saya</span></a>
     </li>
 
     <!-- Nav Item - Users -->
-    <li class="nav-item <?php echo ($this->uri->segment(1) == 'list_user' ? 'active' : ''); ?>">
-        <a class="nav-link" href="">
+    <li class="nav-item <?php echo ($this->uri->segment(2) == 'user_list' ? 'active' : ''); ?>">
+        <a class="nav-link" href="<?php echo site_url(); ?>admin_user/user_list">
             <i class="fas fa-fw fa-users"></i>
             <span>User Web</span></a>
     </li>
@@ -49,27 +49,25 @@
         Test
     </div>
 
-
-    <!-- Nav Item - Test Question -->
+    <!-- Nav Item - Test Qeustion Collpapse -->
     <li class="nav-item <?php echo ($this->uri->segment(1) == 'admin_test' ? 'active' : ''); ?>">
-        <a class="nav-link" href="<?php echo site_url(); ?>admin_test">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages1">
             <i class="fas fa-fw fa-question"></i>
-            <span>Soal</span></a>
-    </li>
-
-    <!-- Nav Item - Payment Collapse Menu -->
-    <li class="nav-item <?php echo ($this->uri->segment(1) == 'payment' ? 'active' : ''); ?>">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="far fa-fw fa-credit-card"></i>
-            <span>Pembayaran</span>
+            <span>Soal</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <a class="collapse-item" href="<?php echo site_url(); ?>admin_test">List Soal</a>
+                <a class="collapse-item" href="<?php echo site_url(); ?>admin_test/add_question">Tambah Soal</a>
             </div>
         </div>
+    </li>
+
+    <!-- Nav Item - Payment -->
+    <li class="nav-item <?php echo ($this->uri->segment(1) == 'admin_payment' ? 'active' : ''); ?>">
+        <a class="nav-link" href="<?php echo site_url(); ?>admin_payment">
+            <i class="far fa-fw fa-credit-card"></i>
+            <span>Pembayaran</span></a>
     </li>
 
     <!-- Divider -->

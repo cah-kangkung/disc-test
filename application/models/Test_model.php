@@ -46,11 +46,11 @@ class Test_model extends CI_Model
     public function editQuestion($new_data = array())
     {
         $influence = $new_data['influence'];
-        $dominant = $new_data['dominant'];
-        $correct = $new_data['correct'];
-        $stable = $new_data['stable'];
+        $dominance = $new_data['dominance'];
+        $compliance = $new_data['compliance'];
+        $steadiness = $new_data['steadiness'];
         $id = $new_data['id'];
-        $query = "UPDATE test_question SET `influence` = '$influence', `dominant` = '$dominant', `correct` = '$correct', `stable` = '$stable' WHERE `question_id` = $id";
+        $query = "UPDATE test_question SET `influence` = '$influence', `dominance` = '$dominance', `compliance` = '$compliance', `steadiness` = '$steadiness' WHERE `question_id` = $id";
         return $this->db->query($query);
     }
 

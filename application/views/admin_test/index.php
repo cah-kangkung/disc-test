@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center mb-4">
         <h1 class="h3 mb-0 text-gray-800 mr-4">Soal</h1>
-        <a href="<?php echo site_url(); ?>admin_test/add_question" class="btn btn-primary shadow-sm">Tambah Soal</a>
+        <a href="<?php echo site_url(); ?>admin_test/add_question?count_questions=<?php echo $count_questions ?>" class="btn btn-primary shadow-sm">Tambah Soal</a>
     </div>
 
     <?php if ($this->session->flashdata('danger_alert')) : ?>
@@ -24,7 +24,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">List Soal</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Menemapilkan (<?php echo $count_questions; ?>)</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -33,9 +33,9 @@
                         <tr>
                             <th>Nomor</th>
                             <th>Influence</th>
-                            <th>Dominant</th>
-                            <th>Correct</th>
-                            <th>Stable</th>
+                            <th>Dominance</th>
+                            <th>Compliance</th>
+                            <th>Steadiness</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -45,9 +45,9 @@
                             <tr>
                                 <td><?php echo $i ?></td>
                                 <td><?php echo $question['influence'] ?></td>
-                                <td><?php echo $question['dominant'] ?></td>
-                                <td><?php echo $question['correct'] ?></td>
-                                <td><?php echo $question['stable'] ?></td>
+                                <td><?php echo $question['dominance'] ?></td>
+                                <td><?php echo $question['compliance'] ?></td>
+                                <td><?php echo $question['steadiness'] ?></td>
                                 <td>
                                     <a href="<?php echo site_url(); ?>admin_test/edit_question/<?php echo $question['question_id'] ?>"><span class="badge badge-success">Edit</span></a>
                                     <a href="<?php echo site_url(); ?>admin_test/delete_question/<?php echo $question['question_id'] ?>"><span class="badge badge-danger" onclick="return confirm('Yakin ingin menghapus?')">Hapus</span></a>

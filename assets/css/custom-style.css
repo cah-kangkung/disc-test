@@ -37,3 +37,33 @@ strong {
 .checkout-form {
     border-left: solid 1px black;
 }
+
+.test-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.test-header .text {
+    font-size: 1.3rem;
+}
+
+.test-questions {
+    font-size: 1rem;
+}
+
+.card-timer {
+    position: sticky;
+}
+
+.test-timer {
+    font-size: 1.32rem;
+    font-weight: 900;
+}
+
+
+.question {
+    margin-bottom: unset;
+}

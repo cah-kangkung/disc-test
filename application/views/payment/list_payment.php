@@ -1,21 +1,21 @@
 <section>
     <div class=" container">
         <h2 class="mb-3">
-            Pembayaran
+            Pembayaran (<?php echo $count; ?>)
         </h2>
 
         <ul class="nav nav-pills mb-5">
             <li class="nav-item">
-                <a class="nav-link <?php echo ($this->uri->segment(2) == '' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment">Semua</a>
+                <a class="nav-link <?php echo ($this->input->get('filter') == '' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/order_list?filter=">Semua</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo ($this->uri->segment(2) == '1' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/1">Menunggu Pembayaran</a>
+                <a class="nav-link <?php echo ($this->input->get('filter') == '1' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/order_list?filter=1">Menunggu Pembayaran</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo ($this->uri->segment(2) == '3' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/3">Pembayaran Terkonfrimasi</a>
+                <a class="nav-link <?php echo ($this->input->get('filter') == '3' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/order_list?filter=3">Pembayaran Terkonfrimasi</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo ($this->uri->segment(2) == '0' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/0">Pembayaran Dibatalkan</a>
+                <a class="nav-link <?php echo ($this->input->get('filter') == '0' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/order_list?filter=0">Pembayaran Dibatalkan</a>
             </li>
         </ul>
 
@@ -60,7 +60,7 @@
                             <p class="card-text">Metode</p>
                         </div>
                         <div class="col-md-10">
-                            <p class="card-text">: Transfer ke Bank <?php echo $payment['destination_bank'] ?> </p>
+                            <p class="card-text">: Transfer Bank <?php echo $payment['bank'] ?> ke <?php echo $payment['destination_bank'] ?> </p>
                         </div>
                     </div>
                     <div class="row mb-2">
@@ -138,6 +138,8 @@
             $i++;
         endforeach;
         ?>
+
+        <?php echo $this->pagination->create_links(); ?>
 
     </div>
 </section>

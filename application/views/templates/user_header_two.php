@@ -45,7 +45,7 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="<?php echo site_url(); ?>profile">Profile</a>
-                                <a class="dropdown-item" href="<?php echo site_url(); ?>payment">Pembayaran/Order</a>
+                                <a class="dropdown-item" href="<?php echo site_url(); ?>payment/order_list">Pembayaran/Order</a>
                                 <a class="dropdown-item" href="#">Laporan</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?php echo site_url(); ?>user_auth/logout">Keluar</a>

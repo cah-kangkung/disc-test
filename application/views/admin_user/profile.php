@@ -25,11 +25,11 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-6">
             <!-- Basic Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <?php echo form_open_multipart('admin_profile'); ?>
+                    <?php echo form_open_multipart('admin_user/profile'); ?>
                     <h4>Foto Profil</h4>
                     <hr>
                     <div class="form-group row mb-5">
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="mt-5 d-flex">
-                        <a href="<?php echo site_url(); ?>admin_profile/change_password" class="btn btn-primary ml-auto">
+                        <a href="<?php echo site_url(); ?>admin_user/change_password" class="btn btn-primary ml-auto">
                             Change Password
                         </a>
                         <button type="submit" class="btn btn-primary ml-3">

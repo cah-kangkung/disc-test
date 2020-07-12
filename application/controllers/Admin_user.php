@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin_profile extends CI_Controller
+class Admin_user extends CI_Controller
 {
     public function __construct()
     {
@@ -10,7 +10,7 @@ class Admin_profile extends CI_Controller
         $this->load->model('User_model', 'User');
     }
 
-    public function index()
+    public function profile()
     {
         if (!$this->session->userdata('loggedIn')) {
             redirect('user_auth');
@@ -32,7 +32,7 @@ class Admin_profile extends CI_Controller
                 $this->load->view('templates/admin_headbar', $data);
                 $this->load->view('templates/admin_sidebar');
                 $this->load->view('templates/admin_topbar');
-                $this->load->view('admin_profile/index');
+                $this->load->view('admin_user/profile');
                 $this->load->view('templates/admin_footer');
             } else {
                 $data['new_data'] = [
@@ -68,7 +68,7 @@ class Admin_profile extends CI_Controller
                 $this->User->updateUserData($data['new_data']);
 
                 $this->session->set_flashdata('success_alert', 'Profil berhasil diubah!');
-                redirect('admin_profile');
+                redirect('admin_user/profile');
             }
         }
     }
@@ -101,7 +101,7 @@ class Admin_profile extends CI_Controller
                 $this->load->view('templates/admin_headbar', $data);
                 $this->load->view('templates/admin_sidebar');
                 $this->load->view('templates/admin_topbar');
-                $this->load->view('admin_profile/change_password');
+                $this->load->view('admin_user/change_password');
                 $this->load->view('templates/admin_footer');
             } else {
                 $current_password = $this->input->post('current_password');
@@ -109,11 +109,11 @@ class Admin_profile extends CI_Controller
 
                 if (!password_verify($current_password, $data['user_data']['password'])) {
                     $this->session->set_flashdata('danger_alert', 'Password lama salah!');
-                    redirect('admin_profile/change_password');
+                    redirect('admin_user/change_password');
                 } else {
                     if ($current_password == $new_password) {
                         $this->session->set_flashdata('danger_alert', "Password baru tidak boleh sama dengan passorw lama");
-                        redirect('admin_profile/change_password');
+                        redirect('admin_user/change_password');
                     } else {
                         // password sudah mantab
                         $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
@@ -121,10 +121,33 @@ class Admin_profile extends CI_Controller
                         $this->User->updatePassword($email, $password_hash);
 
                         $this->session->set_flashdata('success_alert', "Password telah berhasil diubah");
-                        redirect('admin_profile');
+                        redirect('admin_user/profile');
                     }
                 }
             }
+        }
+    }
+
+    public function user_list()
+    {
+        if (!$this->session->userdata('loggedIn')) {
+            redirect('user_auth');
+        } else {
+            if ($this->session->userdata('user_role') == 1102) {
+                redirect('home');
+            }
+            // get all user information from the database
+            $status = $this->input->get('filter');
+            $email = $this->session->userdata('user_email');
+            $data['user_data'] = $this->User->getUserData($email);
+            $data['users'] = $this->User->getAllUser($status);
+            $data['title'] = 'Halaman User Admin';
+
+            $this->load->view('templates/admin_headbar', $data);
+            $this->load->view('templates/admin_sidebar');
+            $this->load->view('templates/admin_topbar');
+            $this->load->view('admin_user/user_list');
+            $this->load->view('templates/admin_footer');
         }
     }
 }

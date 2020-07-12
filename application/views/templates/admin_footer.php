@@ -52,13 +52,14 @@
 <script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- DataTables custom scripts -->
-<script>
-    // Call the dataTables jQuery plugin
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
-    });
-</script>
+<!-- Pusher -->
+<script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+
+<!-- Custom Alert -->
+<script src="<?php echo base_url(); ?>assets/js/bootstrap-notify.min.js"></script>
+
+<!-- Custom JS -->
+<script src="<?php echo base_url(); ?>assets/js/custom-script.js"></script>
 
 </body>
 

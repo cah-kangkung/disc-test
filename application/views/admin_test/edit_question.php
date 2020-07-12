@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-6">
 
             <!-- Basic Card Example -->
             <div class="card shadow mb-4">
@@ -12,31 +12,31 @@
                 <div class="card-body">
                     <form action="<?php echo site_url(); ?>admin_test/edit_question/<?php echo $question['question_id'] ?>" method="post">
                         <div class="form-group row">
-                            <label for="influence" class="col-lg-2 col-form-label">Influence *</label>
-                            <div class="col-lg-10">
+                            <label for="influence" class="col-lg-3 col-form-label">Influence *</label>
+                            <div class="col-lg-9">
                                 <textarea class="form-control" id="influence" name="influence" rows="2" maxlength="200" autofocus><?php echo $question['influence'] ?></textarea>
                                 <?php echo form_error('influence', '<small class="text-danger pl-2">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="dominant" class="col-lg-2 col-form-label">Dominant *</label>
-                            <div class="col-lg-10">
-                                <textarea class="form-control" id="dominant" name="dominant" rows="2" maxlength="200"><?php echo $question['dominant'] ?></textarea>
-                                <?php echo form_error('dominant', '<small class="text-danger pl-2">', '</small>'); ?>
+                            <label for="dominance" class="col-lg-3 col-form-label">Dominance *</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" id="dominance" name="dominance" rows="2" maxlength="200"><?php echo $question['dominance'] ?></textarea>
+                                <?php echo form_error('dominance', '<small class="text-danger pl-2">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="correct" class="col-lg-2 col-form-label">Correct *</label>
-                            <div class="col-lg-10">
-                                <textarea class="form-control" id="correct" name="correct" rows="2" maxlength="200"><?php echo $question['correct'] ?></textarea>
-                                <?php echo form_error('correct', '<small class="text-danger pl-2">', '</small>'); ?>
+                            <label for="compliance" class="col-lg-3 col-form-label">Compliance *</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" id="compliance" name="compliance" rows="2" maxlength="200"><?php echo $question['compliance'] ?></textarea>
+                                <?php echo form_error('compliance', '<small class="text-danger pl-2">', '</small>'); ?>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="stable" class="col-lg-2 col-form-label">Stable *</label>
-                            <div class="col-lg-10">
-                                <textarea class="form-control" id="stable" name="stable" rows="2" maxlength="200"><?php echo $question['stable'] ?></textarea>
-                                <?php echo form_error('stable', '<small class="text-danger pl-2">', '</small>'); ?>
+                            <label for="steadiness" class="col-lg-3 col-form-label">steadiness *</label>
+                            <div class="col-lg-9">
+                                <textarea class="form-control" id="steadiness" name="steadiness" rows="2" maxlength="200"><?php echo $question['steadiness'] ?></textarea>
+                                <?php echo form_error('steadiness', '<small class="text-danger pl-2">', '</small>'); ?>
                             </div>
                         </div>
                         <small style="color: red;">*maks 200 karakter dan harus diisi</small>

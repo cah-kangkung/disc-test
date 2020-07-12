@@ -29,7 +29,7 @@
             <!-- Basic Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <form action="<?php echo site_url() ?>admin_profile/change_password" method="post">
+                    <form action="<?php echo site_url() ?>admin_user/change_password" method="post">
 
                         <div class="form-group">
                             <label for="current_password">Password Lama</label>
@@ -47,7 +47,7 @@
                             <?php echo form_error('new_password2', '<small class="text-danger">', '</small>'); ?>
                         </div>
                         <div class="mt-5 d-flex">
-                            <a href="<?php echo site_url(); ?>admin_profile" class="btn btn-primary ml-auto">
+                            <a href="<?php echo site_url(); ?>admin_user/profile" class="btn btn-primary ml-auto">
                                 Back
                             </a>
                             <button type="submit" class="btn btn-primary ml-3">

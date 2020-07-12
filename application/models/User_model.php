@@ -9,6 +9,17 @@ class User_model extends CI_Model
         return $this->db->insert('user', $data);
     }
 
+    public function getAllUser($status = '')
+    {
+        $query = "";
+        if ($status == '') {
+            $query = "SELECT * FROM user";
+        } else {
+            $query = "SELECT * FROM user WHERE `is_active` = $status";
+        }
+        return $this->db->query($query)->result_array();
+    }
+
     public function getUserData($email)
     {
         return $this->db->query("SELECT * FROM user WHERE `email` = '$email'")->row_array();

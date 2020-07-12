@@ -9,9 +9,15 @@ class Payment_model extends CI_Model
         return $this->db->insert('payment', $data);
     }
 
-    public function getAllPayment()
+    public function getAllPayment($payment_status = '')
     {
-        return $this->db->query("SELECT * FROM payment")->result_array();
+        $query = "";
+        if ($payment_status == '') {
+            $query = "SELECT * FROM payment ORDER BY `date_created` DESC";
+        } else {
+            $query = "SELECT * FROM payment WHERE `status` = $payment_status ORDER BY `date_created` DESC";
+        }
+        return $this->db->query($query)->result_array();
     }
 
     public function getPaymentByID($payment_id)
@@ -19,7 +25,22 @@ class Payment_model extends CI_Model
         return $this->db->query("SELECT * FROM payment WHERE `payment_id` = $payment_id")->row_array();
     }
 
-    public function getPaymentByUser($user_id, $status = '')
+    public function getPaymentByUser($user_id, $status = '', $limit, $offset)
+    {
+        if ($offset == NULL) {
+            $offset = 0;
+        }
+
+        $query = "";
+        if ($status == '') {
+            $query = "SELECT * FROM payment WHERE `user_id` = $user_id ORDER BY `date_created` DESC LIMIT $offset, $limit";
+        } else {
+            $query = "SELECT * FROM payment WHERE `user_id` = $user_id AND `status` = $status ORDER BY `date_created` DESC LIMIT $offset, $limit";
+        }
+        return $this->db->query($query)->result_array();
+    }
+
+    public function countUserPayment($user_id, $status = '')
     {
         $query = "";
         if ($status == '') {
@@ -27,7 +48,7 @@ class Payment_model extends CI_Model
         } else {
             $query = "SELECT * FROM payment WHERE `user_id` = $user_id AND `status` = $status ORDER BY `date_created` DESC";
         }
-        return $this->db->query($query)->result_array();
+        return $this->db->query($query)->num_rows();
     }
 
     public function editSenderBank($new_data = array())
@@ -47,6 +68,13 @@ class Payment_model extends CI_Model
         if ($type == 'cancel') {
             $query1 = "UPDATE payment SET `status` = 0 WHERE `payment_id` = $payment_id";
             $query2 = "UPDATE active_test SET `status` = 0 WHERE `user_id` = $user_id";
+        } elseif ($type == 'confirm') {
+            $query1 = "UPDATE payment SET `status` = 3 WHERE `payment_id` = $payment_id";
+            $query2 = "UPDATE active_test SET `status` = 2 WHERE `user_id` = $user_id";
+        }
+        elseif ($type == 'waiting') {
+            $query1 = "UPDATE payment SET `status` = 1 WHERE `payment_id` = $payment_id";
+            $query2 = "UPDATE active_test SET `status` = 1 WHERE `user_id` = $user_id";
         }
 
         $this->db->trans_start();
