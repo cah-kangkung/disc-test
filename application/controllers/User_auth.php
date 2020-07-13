@@ -193,6 +193,7 @@ class User_auth extends CI_Controller
                     $this->load->model('Active_test_model', 'Active_test');
                     $data['active_user'] = [
                         'user_id' => $user['user_id'],
+                        'payment_id' => null,
                         'time_start' => null,
                         'time_end' => null,
                         'status' => 0,

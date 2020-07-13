@@ -57,6 +57,7 @@ class Payment_model extends CI_Model
         $bank_account_name = $new_data['bank_account_name'];
         $bank_account_number = $new_data['bank_account_number'];
         $payment_id = $new_data['payment_id'];
+        
         $query = "UPDATE payment SET `bank` = '$bank', `bank_account_name` = '$bank_account_name', `bank_account_number` = '$bank_account_number' WHERE `payment_id` = $payment_id";
         return $this->db->query($query);
     }
@@ -67,14 +68,16 @@ class Payment_model extends CI_Model
         $query2 = '';
         if ($type == 'cancel') {
             $query1 = "UPDATE payment SET `status` = 0 WHERE `payment_id` = $payment_id";
-            $query2 = "UPDATE active_test SET `status` = 0 WHERE `user_id` = $user_id";
+            $query2 = "UPDATE active_test SET `payment_id` = null, `status` = 0 WHERE `user_id` = $user_id";
         } elseif ($type == 'confirm') {
             $query1 = "UPDATE payment SET `status` = 3 WHERE `payment_id` = $payment_id";
-            $query2 = "UPDATE active_test SET `status` = 2 WHERE `user_id` = $user_id";
-        }
-        elseif ($type == 'waiting') {
+            $query2 = "UPDATE active_test SET `payment_id` = $payment_id, `status` = 2 WHERE `user_id` = $user_id";
+        } elseif ($type == 'waiting') {
             $query1 = "UPDATE payment SET `status` = 1 WHERE `payment_id` = $payment_id";
-            $query2 = "UPDATE active_test SET `status` = 1 WHERE `user_id` = $user_id";
+            $query2 = "UPDATE active_test SET `payment_id` = null, `status` = 1 WHERE `user_id` = $user_id";
+        } elseif ($type == 'finish') {
+            $query1 = "UPDATE payment SET `status` = 4 WHERE `payment_id` = $payment_id";
+            $query2 = "UPDATE active_test SET `payment_id` = null, `status` = 0 WHERE `user_id` = $user_id";
         }
 
         $this->db->trans_start();

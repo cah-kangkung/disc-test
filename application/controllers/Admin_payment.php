@@ -60,6 +60,7 @@ class Admin_payment extends CI_Controller
         $user_id = $_GET['user_id'];
 
         $this->Payment->updateStatus('confirm', $payment_id, $user_id);
+
         redirect('admin_payment');
     }
 }

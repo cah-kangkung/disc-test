@@ -1,15 +1,16 @@
 $(document).ready(function () {
 
-    let dataTables = function () {
-        $('#dataTable').DataTable({
+    const dataTables = function () {
+        $('#paymentTable').DataTable({
             "order": [
                 [1, "desc"]
             ]
         });
+        $('#dataTable').DataTable();
     }
     dataTables();
 
-    let pusherConnection = function () {
+    const pusherConnection = function () {
 
         let pusher = new Pusher('97e23ed5d522856f8f11', {
             cluster: 'ap1'
@@ -29,6 +30,8 @@ $(document).ready(function () {
 
     }
     pusherConnection();
+
+
 
 
 });

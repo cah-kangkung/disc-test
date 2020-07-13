@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center mb-4">
         <h1 class="h3 mb-0 text-gray-800 mr-4">Soal</h1>
-        <a href="<?php echo site_url(); ?>admin_test/add_question?count_questions=<?php echo $count_questions ?>" class="btn btn-primary shadow-sm">Tambah Soal</a>
+        <a href="<?php echo site_url(); ?>admin_test/add_question" class="btn btn-primary shadow-sm">Tambah Soal</a>
     </div>
 
     <?php if ($this->session->flashdata('danger_alert')) : ?>

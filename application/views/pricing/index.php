@@ -5,7 +5,7 @@
         <?php elseif ($active_test['status'] == 1) : ?>
             <a href="<?php echo site_url(); ?>payment/order_list?filter=1" class="btn btn-primary">Menunggu Pembayaran</a>
         <?php elseif ($active_test['status'] == 2) : ?>
-            <a href="<?php echo site_url(); ?>test" class="btn btn-primary">Pembayaran Terkonfirmasi, silahkan ikuti tes</a>
+            <a href="<?php echo site_url(); ?>test/start_test" class="btn btn-primary">Pembayaran Terkonfirmasi, silahkan ikuti tes</a>
         <?php elseif ($active_test['status'] == 3) : ?>
             <a href="<?php echo site_url(); ?>test" class="btn btn-primary">Tes sedang berjalan, silahkan lanjutkan</a>
         <?php endif; ?>

@@ -17,6 +17,9 @@
             <li class="nav-item">
                 <a class="nav-link <?php echo ($this->input->get('filter') == '0' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/order_list?filter=0">Pembayaran Dibatalkan</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link <?php echo ($this->input->get('filter') == '4' ? 'active rounded-pill' : ''); ?>" href="<?php echo site_url(); ?>payment/order_list?filter=4">Selesai</a>
+            </li>
         </ul>
 
         <?php $i = 1; ?>
@@ -33,8 +36,10 @@
                                 <span class="badge badge-pill badge-warning p-2">Menunggu Pembayaran</span>
                             <?php elseif ($payment['status'] == 2) : ?>
                                 <span class="badge badge-pill badge-info p-2">Bukti Diunggah</span>
-                            <?php elseif ($payment['status'] == 1) : ?>
+                            <?php elseif ($payment['status'] == 3) : ?>
                                 <span class="badge badge-pill badge-success p-2">Pembayaran Terkonfirmasi</span>
+                            <?php elseif ($payment['status'] == 4) : ?>
+                                <span class="badge badge-pill badge-success p-2">Selesai</span>
                             <?php endif; ?>
                         </p>
                     </div>
@@ -48,6 +53,10 @@
                     <?php elseif ($payment['status'] == 3) : ?>
                         <div class="alert alert-success" role="alert">
                             Pembayaran telah dikonfirmasi!
+                        </div>
+                    <?php elseif ($payment['status'] == 4) : ?>
+                        <div class="alert alert-success" role="alert">
+                            Transaksi Selesai
                         </div>
                     <?php elseif ($payment['status'] == 0) : ?>
                         <div class="alert alert-danger" role="alert">
@@ -92,7 +101,7 @@
                         <small>
                             <a href="<?php echo site_url(); ?>pricing" class="mr-2"> Ikuti Test</a>
                         </small>
-                    <?php elseif ($payment['status'] == 0) : ?>
+                    <?php elseif ($payment['status'] == 0 || $payment['status'] == 4) : ?>
                         <small>
                             <a href="<?php echo site_url(); ?>pricing" class="mr-2"> Ke Halaman Test</a>
                         </small>

@@ -35,13 +35,16 @@
                     <a class="nav-link <?php echo ($this->input->get('filter') == '3' ? 'active' : '') ?>" href="<?php echo site_url(); ?>admin_payment?filter=3">Pembayaran Terkonfirmasi</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?php echo ($this->input->get('filter') == '4' ? 'active' : '') ?>" href="<?php echo site_url(); ?>admin_payment?filter=4">Selesai</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link <?php echo ($this->input->get('filter') == '0' ? 'active' : '') ?>" href="<?php echo site_url(); ?>admin_payment?filter=0">Pembayaran Dibatalkan</a>
                 </li>
             </ul>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="paymentTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>User</th>
@@ -66,8 +69,10 @@
                                 <td><?php echo $payment['bank_account_name'] ?></td>
                                 <td>
                                     <?php if ($payment['status'] == 1) : ?>
-                                        <span class="badge badge-warning"><i class="fas fa-dollar-sign"></i></span>
+                                        <span class="badge badge-warning"><i class="fas fa-spinner"></i></span>
                                     <?php elseif ($payment['status'] == 3) : ?>
+                                        <span class="badge badge-success"><i class="fas fa-dollar-sign"></i></span>
+                                    <?php elseif ($payment['status'] == 4) : ?>
                                         <span class="badge badge-success"><i class="fas fa-check"></i></span>
                                     <?php elseif ($payment['status'] == 0) : ?>
                                         <span class="badge badge-danger">X</span>
@@ -95,6 +100,11 @@
                                         </a>
                                         <a href="<?php echo site_url(); ?>admin_payment/revert_to_waiting?payment_id=<?php echo $payment['payment_id'] ?>&user_id=<?php echo $payment['user_id'] ?>">
                                             <span class="badge badge-warning" onclick="return confirm('Yakin ingin kembali menunggu pembayaran?')">Tunggu</span>
+                                        </a>
+                                    <?php elseif ($payment['status'] == 4) : ?>
+
+                                        <!-- Button trigger modal -->
+                                        <a href="" data-toggle="modal" data-target="#adminPaymentModal<?php echo $i; ?>"><span class="badge badge-info">Detil</span>
                                         </a>
                                     <?php elseif ($payment['status'] == 0) : ?>
 
@@ -135,6 +145,8 @@
                                                         <span class="badge badge-pill badge-info p-2">Bukti Diunggah</span>
                                                     <?php elseif ($payment['status'] == 3) : ?>
                                                         <span class="badge badge-pill badge-success p-2">Pembayaran Terkonfirmasi</span>
+                                                    <?php elseif ($payment['status'] == 4) : ?>
+                                                        <span class="badge badge-pill badge-success p-2">Selesai</span>
                                                     <?php endif; ?>
                                                 </p>
                                             </div>
@@ -148,6 +160,10 @@
                                             <?php elseif ($payment['status'] == 3) : ?>
                                                 <div class="alert alert-success" role="alert">
                                                     Pembayaran telah dikonfirmasi!
+                                                </div>
+                                            <?php elseif ($payment['status'] == 4) : ?>
+                                                <div class="alert alert-success" role="alert">
+                                                    Transaksi telah selesai
                                                 </div>
                                             <?php elseif ($payment['status'] == 0) : ?>
                                                 <div class="alert alert-danger" role="alert">

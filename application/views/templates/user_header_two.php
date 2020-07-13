@@ -44,7 +44,7 @@
                                 <img src="<?php echo base_url(); ?>assets/img/profile-pictures/<?php echo $user_data['image']; ?>" width="30" height="30" class="align-center rounded-circle" alt="">
                             </a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="<?php echo site_url(); ?>profile">Profile</a>
+                                <a class="dropdown-item" href="<?php echo site_url(); ?>profile" id="profile" data-userdata="<?php echo $user_data['user_id']; ?>">Profile</a>
                                 <a class="dropdown-item" href="<?php echo site_url(); ?>payment/order_list">Pembayaran/Order</a>
                                 <a class="dropdown-item" href="#">Laporan</a>
                                 <div class="dropdown-divider"></div>

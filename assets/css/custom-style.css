@@ -55,7 +55,9 @@ strong {
 }
 
 .card-timer {
+    position: -webkit-sticky; /* Safari */
     position: sticky;
+    top: 2%;
 }
 
 .test-timer {

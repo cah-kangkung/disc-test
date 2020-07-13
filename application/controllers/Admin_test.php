@@ -48,8 +48,6 @@ class Admin_test extends CI_Controller
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
 
-            $data['count'] = $_GET['count_questions'];
-
             $this->form_validation->set_rules('influence', 'Influence', 'required|trim', ['required' => 'Influence harus diisi']);
             $this->form_validation->set_rules('dominance', 'Dominance', 'required|trim', ['required' => 'Dominance harus diisi']);
             $this->form_validation->set_rules('compliance', 'Compliance', 'required|trim', ['required' => 'Compliance harus diisi']);

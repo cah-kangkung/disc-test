@@ -8,7 +8,7 @@
             <!-- Basic Card Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Soal ke <?php echo $count +  1; ?></h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tambah Soal</h6>
                 </div>
                 <div class="card-body">
                     <form action="<?php echo site_url(); ?>admin_test/add_question" method="post">
