@@ -116,7 +116,7 @@ class Test extends CI_Controller
                 $this->Active_test->updateActiveTest($data['new_at']);
 
                 $this->session->set_flashdata('danger_alert', 'Waktu anda telah habis, silahkan order kembali untuk mengikuti tes');
-                redirect('pricing');
+                redirect('report');
             } else {
                 // if not expired
                 $questions = $this->Test->getAllQuestion();
@@ -175,7 +175,7 @@ class Test extends CI_Controller
                 $this->Active_test->updateActiveTest($data['new_at']);
 
                 $this->session->set_flashdata('success_alert', 'Selamat anda telah menyelesaikan test!');
-                redirect('pricing');
+                redirect('report');
             }
         }
     }

@@ -1,4 +1,14 @@
 <footer>
+    <div class="container">
+        <div class="copyright">
+            Copyright &#9400; 2020 Psikologi Star
+        </div>
+        <div class="footer-list ml-auto">
+            <a href="<?php echo site_url(); ?>home">Beranda</a>
+            <a href="<?php echo site_url(); ?>disc">Disc</a>
+            <a href="<?php echo site_url(); ?>test">Test</a>
+        </div>
+    </div>
 </footer>
 
 <!-- Optional JavaScript -->

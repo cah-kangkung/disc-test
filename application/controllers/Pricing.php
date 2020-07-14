@@ -7,7 +7,7 @@ class Pricing extends CI_Controller
     {
         if (!$this->session->userdata('loggedIn')) {
             $this->load->view('templates/user_header');
-            $this->load->view('pricing/index');
+            $this->load->view('pricing/index_two');
             $this->load->view('templates/user_footer');
         } else {
             if ($this->session->userdata('user_role') == 1101) {

@@ -25,6 +25,11 @@ class User_model extends CI_Model
         return $this->db->query("SELECT * FROM user WHERE `email` = '$email'")->row_array();
     }
 
+    public function getUserByID($user_id)
+    {
+        return $this->db->query("SELECT * FROM user WHERE `user_id` = '$user_id'")->row_array();
+    }
+
     public function countUser()
     {
         return $this->db->count_all('user');

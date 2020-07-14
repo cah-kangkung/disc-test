@@ -1,7 +1,15 @@
 /* MOBILE FIRST */
+html, body {
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
 
 section {
-    margin: 4rem 0;
+    margin: 8rem 0;
 }
 
 strong {
@@ -17,8 +25,16 @@ strong {
     text-align: center;
 }
 
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
 .navbar {
-    padding: 0.75rem 1rem;
+    padding: 1.5rem 1rem;
 }
 
 .nav-item {
@@ -26,6 +42,63 @@ strong {
     align-items: center;
     text-align: center;
     margin-right: 1.9rem;
+}
+
+#hero {
+    margin: unset;
+    width: 100;
+    height: 100vh;
+    background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url('../img/background/snow-mountain-1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#hero .container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heading h1 {
+    font-size: 4.5rem;
+}
+
+.heading p {
+    font-size: 1.5rem;
+}
+
+.heading h1, .heading p {
+    color: white;
+}
+
+#about .image-wrapper, #about .text-wrapper {
+    margin-bottom: 5em;
+    padding: 0 1em;
+}
+
+#about .image-wrapper {
+    display: flex;
+}
+
+#about img {
+    margin: 0 0;
+}
+
+#about .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.description {
+    height: fit-content;
+}
+
+.description .text {
+    text-align: justify;
 }
 
 .dropdown-menu {
@@ -65,7 +138,26 @@ strong {
     font-weight: 900;
 }
 
-
 .question {
     margin-bottom: unset;
+}
+
+footer {
+    margin-top: auto;
+    color: white;
+    background-color: #1A1A1A;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer a {
+    color: white;
+    margin-right: 3em;
 }

@@ -15,17 +15,17 @@
 
 <body>
 
-    <head>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <header>
+        <nav class="navbar navbar-expand-lg <?php echo ($this->uri->segment(1) == 'home' || $this->uri->segment(1) == ''  ? 'navbar-dark' : 'navbar-light') ?>">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo site_url(); ?>home">PSIKOLOGI STAR</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarColor03">
+                <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item <?php echo ($this->uri->segment(1) == 'home' || $this->uri->segment(1) == '' ? 'active' : ''); ?>">
+                        <li class="nav-item <?php echo ($this->uri->segment(1) == 'home' || $this->uri->segment(1) == ''  ? 'active' : ''); ?>">
                             <a class="nav-link" href="<?php echo site_url(); ?>home">BERANDA</span></a>
                         </li>
                         <li class="nav-item <?php echo ($this->uri->segment(1) == 'disc' ? 'active' : ''); ?>">
@@ -41,4 +41,4 @@
                 </div>
             </div>
         </nav>
-    </head>
+    </header>

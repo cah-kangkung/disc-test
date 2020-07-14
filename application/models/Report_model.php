@@ -15,7 +15,7 @@ class Report_model extends CI_Model
 
     public function getReportByUser($user_id)
     {
-        return $this->db->query("SELECT * FROM report WHERE `user_id` = $user_id")->result_array();
+        return $this->db->query("SELECT * FROM report WHERE `user_id` = $user_id ORDER BY `date_created` DESC")->result_array();
     }
 
     public function makeReport($data = array())
