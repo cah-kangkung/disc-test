@@ -126,7 +126,7 @@ class Payment extends CI_Controller
                 // PUSHER TRIGGER
                 $pusher = new Pusher\Pusher("97e23ed5d522856f8f11", "bf7dfd9b59003270d753", "1037064", array('cluster' => 'ap1'));
 
-                $data['message'] = 'check-out success';
+                $data['message'] = 'Notifikasi user checkout';
                 $pusher->trigger('my-channel', 'my-event', $data);
 
                 redirect('payment/order_list');
