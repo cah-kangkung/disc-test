@@ -89,10 +89,10 @@
 
                     <div class="mt-5 d-flex">
                         <a href="<?php echo site_url(); ?>admin_user/change_password" class="btn btn-primary ml-auto">
-                            Change Password
+                            Ubah Kata Sandi
                         </a>
                         <button type="submit" class="btn btn-primary ml-3">
-                            Save Changes
+                            Simpan Perubahan
                         </button>
                     </div>
 

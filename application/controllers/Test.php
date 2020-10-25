@@ -26,6 +26,8 @@ class Test extends CI_Controller
                 redirect('home');
             } elseif ($data['active_test']['status'] == 1 || $data['active_test']['status'] == 0) {
                 redirect('pricing');
+            } elseif ($data['user_data']['is_completed'] != 1) {
+                redirect('profile');
             }
 
             $time_end = strtotime($data['active_test']['time_end']);
@@ -62,8 +64,10 @@ class Test extends CI_Controller
                 redirect('pricing');
             }
 
+            $data['test'] = $this->Test->getTestByID(1);
+            $duration = (int) $data['test']['duration'];
             date_default_timezone_set("Asia/Jakarta");
-            $date_end = time() + (30 * 60);
+            $date_end = time() + ($duration * 60);
 
             $data['new_data'] = [
                 'user_id' => $data['user_data']['user_id'],
@@ -128,6 +132,9 @@ class Test extends CI_Controller
                     $question = $this->input->post($index);
                     $data['questions'][$index] = $question;
                 }
+
+                var_dump($data['questions']);
+                die;
 
                 // count scores
                 $score['influence'] = 0;

@@ -1,7 +1,7 @@
 <section>
     <div class=" container">
         <h2 class="mb-5">
-            Checkout
+            Pembayaran
         </h2>
         <div class="row">
             <div class="col-lg-9">
@@ -22,13 +22,13 @@
                                     <div class="radio-wrap">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="customRadio" disabled>
-                                            <label class="custom-control-label" style="display: block;" for="customRadio">More coming soon</label>
+                                            <label class="custom-control-label" style="display: block;" for="customRadio">Lebih banyak bank, segera!</label>
                                         </div>
                                     </div>
                                     <div class="radio-wrap">
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="customRadio" disabled>
-                                            <label class="custom-control-label" style="display: block;" for="customRadio">More coming soon</label>
+                                            <label class="custom-control-label" style="display: block;" for="customRadio">Lebih banyak bank, segera!</label>
                                         </div>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                                     <h5>Detail Harga</h5>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <p style="font-weight: 400;">Test <?php echo $test['name'] ?></p>
+                                            <p style="font-weight: 400;">Tes <?php echo $test['name'] ?></p>
                                         </div>
                                         <div class="col-sm-6" style="text-align: right;">
                                             <p style="font-weight: 400;">Rp <?php echo $test['price'] ?></p>
@@ -77,8 +77,6 @@
                                 </div>
                                 <div class="container">
                                     <div class="row" style="padding: 15px 15px 0 15px;">
-
-                                        <p style="font-size: 14px;">Dengan mengklik tombol ini, anda telah menyetujui Terms & Conditions dan Privacy Policy dari PSIKOLOGI STAR</p>
                                     </div>
                                     <div class="row" style="padding: 0 15px;">
                                         <button type="submit" style="width: 100%; text-transform: none;" class="btn btn-primary btn-custom">Bayar dengan Bank Transfer <i class="fas fa-lock"></i></button>

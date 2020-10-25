@@ -36,11 +36,11 @@
                                 </div>
                                 <div class="form-group text-left row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user" id="password1" name="password1" placeholder="Kata Sandi">
                                         <?php echo form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Ulangi Password">
+                                        <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Ulangi Kata Sandi">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-custom btn-block">
@@ -49,7 +49,7 @@
                                 <hr>
                             </form>
                             <div class="text-center">
-                                <a class="small" href="<?php echo site_url(); ?>user_auth/forgot_password">Lupa Password?</a>
+                                <a class="small" href="<?php echo site_url(); ?>user_auth/forgot_password">Lupa Kata Sandi?</a>
                             </div>
                             <div class="text-center">
                                 <a class="small" href="<?php echo site_url(); ?>user_auth/">Sudah punya akun? masuk...</a>

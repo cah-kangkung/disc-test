@@ -13,12 +13,23 @@ class Admin_dashboard extends CI_Controller
             }
 
             $this->load->model('User_model', 'User');
+            $this->load->model('Test_model', 'Test');
+            $this->load->model('Payment_model', 'Payment');
 
             // get all user information from the database
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
             $data['total_user'] = $this->User->countUser();
+            $questions = $this->Test->getAllQuestion();
+            $data['total_questions'] = count($questions);
             $data['title'] = 'Halaman Dashboard';
+
+            // count total earning
+            $payment_list = $this->Payment->getTotalEarning();
+            $data['total_earning'] = 0;
+            foreach ($payment_list as $payment) {
+                $data['total_earning'] += (int) $payment['total_amount'];
+            }
 
             $this->load->view('templates/admin_headbar', $data);
             $this->load->view('templates/admin_sidebar');

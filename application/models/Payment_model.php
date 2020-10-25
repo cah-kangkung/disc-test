@@ -20,6 +20,27 @@ class Payment_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function generatePaymentReport($date_from = '', $date_to = '')
+    {
+        $query = '';
+        if ($date_from == '' && $date_to == '') {
+            $query = "SELECT * FROM payment";
+        } elseif ($date_from == '' && $date_to != '') {
+            $query = "SELECT * FROM payment WHERE `date_created` <= '$date_to'";
+        } elseif ($date_from != '' && $date_to == '') {
+            $query = "SELECT * FROM payment WHERE `date_created` >= '$date_from'";
+        } else {
+            $query = "SELECT * FROM payment WHERE `date_created` BETWEEN '$date_from' AND '$date_to'";
+        }
+
+        return $this->db->query($query)->result_array();
+    }
+
+    public function getTotalEarning()
+    {
+        return $this->db->query("SELECT `total_amount` FROM payment WHERE `status` = 3 OR `status` = 4")->result_array();
+    }
+
     public function getPaymentByID($payment_id)
     {
         return $this->db->query("SELECT * FROM payment WHERE `payment_id` = $payment_id")->row_array();
@@ -57,7 +78,7 @@ class Payment_model extends CI_Model
         $bank_account_name = $new_data['bank_account_name'];
         $bank_account_number = $new_data['bank_account_number'];
         $payment_id = $new_data['payment_id'];
-        
+
         $query = "UPDATE payment SET `bank` = '$bank', `bank_account_name` = '$bank_account_name', `bank_account_number` = '$bank_account_number' WHERE `payment_id` = $payment_id";
         return $this->db->query($query);
     }

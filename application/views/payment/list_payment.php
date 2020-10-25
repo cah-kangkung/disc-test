@@ -95,7 +95,7 @@
                             <a href="#" class="mr-3" data-toggle="modal" data-target="#paymentModal<?php echo $i; ?>">
                                 Ubah Informasi Bank
                             </a>
-                            <a href="<?php echo site_url(); ?>payment/cancel_payment?payment_id=<?php echo $payment['payment_id'] ?>&user_id=<?php echo $user_data['user_id'] ?>" class="mr-2" onclick="return confirm('Yakin ingin membatalkan?')"> Batalkan Order</a>
+                            <a href="<?php echo site_url(); ?>payment/cancel_payment?payment_id=<?php echo $payment['payment_id'] ?>&user_id=<?php echo $user_data['user_id'] ?>" class="mr-2" onclick="return confirm('Yakin ingin membatalkan?')"> Batalkan Pesanan</a>
                         </small>
                     <?php elseif ($payment['status'] == 3) : ?>
                         <small>

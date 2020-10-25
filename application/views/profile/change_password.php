@@ -20,29 +20,29 @@
                 <form action="<?php echo site_url() ?>profile/change_password" method="post">
 
                     <div class="form-group">
-                        <label for="current_password">Password Lama</label>
+                        <label for="current_password">Kata Sandi Lama</label>
                         <input type="password" class="form-control" id="current_password" name="current_password">
                         <?php echo form_error('current_password', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="form-group">
-                        <label for="new_password1">Password Baru</label>
+                        <label for="new_password1">Kata Sandi Baru</label>
                         <input type="password" class="form-control" id="new_password1" name="new_password1">
                         <?php echo form_error('new_password1', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="form-group">
-                        <label for="new_password2">Ulangi Password baru</label>
+                        <label for="new_password2">Ulangi Kata Sandi Baru</label>
                         <input type="password" class="form-control" id="new_password2" name="new_password2">
                         <?php echo form_error('new_password2', '<small class="text-danger">', '</small>'); ?>
                     </div>
                     <div class="row mt-5">
-                        <div class="col-sm-2 mb-3">
+                        <div class="col-sm-2 mb-3 mr-4">
                             <a href="<?php echo site_url(); ?>profile" class="btn btn-primary">
-                                Back
+                                Kembali
                             </a>
                         </div>
-                        <div class="col-sm-10">
+                        <div class="col-sm-8">
                             <button type="submit" class="btn btn-primary">
-                                Save Password
+                                Simpan
                             </button>
                         </div>
                     </div>

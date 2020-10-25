@@ -18,9 +18,12 @@ class Test_model extends CI_Model
         null;
     }
 
-    public function udpateTest($data = array())
+    public function udpateTest($data)
     {
-        null;
+        $price = $data['price'];
+        $duration = $data['duration'];
+        $query = "UPDATE test SET `price` = $price, `duration` = $duration WHERE `test_id` = 1";
+        return $this->db->query($query);
     }
 
     public function deleteTest($data = array())

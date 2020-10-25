@@ -2,11 +2,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo site_url(); ?>admin_dashboard">
         <div class="sidebar-brand-icon">
             <i class="fas fa-user-cog"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Admin DISC</div>
+        <div class="sidebar-brand-text mx-3">Admin Psikologi</div>
     </a>
 
     <!-- Divider -->
@@ -38,7 +38,7 @@
     <li class="nav-item <?php echo ($this->uri->segment(2) == 'user_list' ? 'active' : ''); ?>">
         <a class="nav-link" href="<?php echo site_url(); ?>admin_user/user_list">
             <i class="fas fa-fw fa-users"></i>
-            <span>User Web</span></a>
+            <span>Pengguna Web</span></a>
     </li>
 
     <!-- Divider -->
@@ -61,6 +61,13 @@
                 <a class="collapse-item" href="<?php echo site_url(); ?>admin_test/add_question">Tambah Soal</a>
             </div>
         </div>
+    </li>
+
+    <!-- Nav Item - Edit Test -->
+    <li class="nav-item <?php echo ($this->uri->segment(1) == 'edit_test' ? 'active' : ''); ?>">
+        <a class="nav-link" href="<?php echo site_url(); ?>admin_test/edit_test">
+            <i class="far fa-fw fa-file-word"></i>
+            <span>Edit Test</span></a>
     </li>
 
     <!-- Nav Item - Payment -->

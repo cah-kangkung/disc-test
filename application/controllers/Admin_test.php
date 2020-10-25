@@ -124,4 +124,42 @@ class Admin_test extends CI_Controller
         $this->Test->deleteQuestion($id);
         redirect('admin_test');
     }
+
+    public function edit_test()
+    {
+        if (!$this->session->userdata('loggedIn')) {
+            redirect('user_auth');
+        } else {
+            if ($this->session->userdata('user_role') == 1102) {
+                redirect('home');
+            }
+
+            // get all user information from the database
+            $email = $this->session->userdata('user_email');
+            $data['user_data'] = $this->User->getUserData($email);
+            $data['test'] = $this->Test->getTestByID(1);
+
+            $this->form_validation->set_rules('price', 'Price', 'required|trim', ['required' => 'Harga harus diisi']);
+            $this->form_validation->set_rules('duration', 'Duration', 'required|trim', ['required' => 'Durasi harus diisi']);
+
+            if ($this->form_validation->run() == false) {
+                $data['title'] = "Halamn Edit Test";
+                $this->load->view('templates/admin_headbar', $data);
+                $this->load->view('templates/admin_sidebar');
+                $this->load->view('templates/admin_topbar');
+                $this->load->view('admin_test/edit_test');
+                $this->load->view('templates/admin_footer');
+            } else {
+                $data['new_test'] = [
+                    'price' => $this->input->post('price'),
+                    'duration' => $this->input->post('duration'),
+                ];
+
+                $this->Test->udpateTest($data['new_test']);
+
+                $this->session->set_flashdata('success_alert', 'Test berhasil di edit');
+                redirect('admin_test/edit_test');
+            }
+        }
+    }
 }

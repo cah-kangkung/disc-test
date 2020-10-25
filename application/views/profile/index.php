@@ -1,7 +1,7 @@
 <section>
     <div class="container">
 
-        <h2 class="mb-5">Edit Profile</h2>
+        <h2 class="mb-5">Edit Profil</h2>
 
         <div class="row">
             <div class="col-lg-8">
@@ -25,7 +25,7 @@
             <div class="col-lg-8">
                 <?php echo form_open_multipart('profile'); ?>
 
-                <h4>Profile Picture</h4>
+                <h4>Foto Profil</h4>
                 <hr>
                 <div class="form-group row mb-5">
                     <div class="col-sm-3 mb-3">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
 
-                <h4>Information</h4>
+                <h4>Informasi</h4>
                 <hr>
                 <div class="form-group row">
                     <label for="full_name" class="col-xl-3 col-form-label">Nama Lengkap</label>
@@ -85,12 +85,12 @@
                 <div class="row mt-5">
                     <div class="col-sm-3 mb-3">
                         <button type="submit" class="btn btn-primary">
-                            Save Changes
+                            Simpan
                         </button>
                     </div>
                     <div class="col-sm-9">
                         <a href="<?php echo site_url(); ?>profile/change_password" class="btn btn-primary">
-                            Change Password
+                            Ubah Kata Sandi
                         </a>
                     </div>
                 </div>

@@ -1,11 +1,11 @@
 $(document).ready(function () {
 
     const dataTables = function () {
-        $('#paymentTable').DataTable({
-            "order": [
-                [1, "desc"]
-            ]
-        });
+        // $('#data-table').DataTable({
+        //     "order": [
+        //         [1, "desc"]
+        //     ]
+        // });
         $('#dataTable').DataTable();
     }
     dataTables();

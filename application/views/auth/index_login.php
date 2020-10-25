@@ -51,7 +51,7 @@
                                             <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                         <div class="form-group text-left">
-                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Kata Sandi">
                                             <?php echo form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-custom btn-block">
@@ -63,7 +63,7 @@
                                         <a class="small" href="<?php echo site_url(); ?>user_auth/register">Buat akun</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="<?php echo site_url(); ?>user_auth/forgot_password">Lupa Password?</a>
+                                        <a class="small" href="<?php echo site_url(); ?>user_auth/forgot_password">Lupa Kata Sandi?</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="<?php echo site_url(); ?>home">Kembali ke beranda</a>

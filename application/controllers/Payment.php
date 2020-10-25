@@ -55,13 +55,15 @@ class Payment extends CI_Controller
         if (!$this->session->userdata('loggedIn')) {
             redirect('user_auth');
         } else {
-            if ($this->session->userdata('user_role') == 1101) {
-                redirect('admin_dashboard');
-            }
-
             // get all user information from the database
             $email = $this->session->userdata('user_email');
             $data['user_data'] = $this->User->getUserData($email);
+
+            if ($this->session->userdata('user_role') == 1101) {
+                redirect('admin_dashboard');
+            } elseif ($data['user_data']['is_completed'] != 1) {
+                redirect('profile');
+            }
 
             // get active test status the user currently has
             // kick them if they are in active status

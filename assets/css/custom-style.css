@@ -47,7 +47,6 @@ header {
     padding: 1.5rem 1rem;
 }
 
-
 .bg-light {
     border: unset;
 }
@@ -98,6 +97,7 @@ header {
 
 #about .image-wrapper {
     display: flex;
+    align-items: center;
 }
 
 #about img {
@@ -134,6 +134,8 @@ header {
 
 .nav-pills .nav-link {
     border: 1px solid black;
+    border-radius: 30px;
+    margin-bottom: 1em;
 }
 
 .disc-content {
@@ -148,7 +150,7 @@ header {
 
 .tab-content .heading {
     font-size: 2.3rem;
-    margin: 2em 0;
+    margin: 3em 0 1.8em 0;  
 }
 
 .tab-content p {
@@ -156,10 +158,14 @@ header {
 }
 
 #pricing .container {
+    padding-top: 10em;
+}
+
+#pricing .text-wrapper {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .checkout-form {
@@ -198,6 +204,7 @@ header {
 }
 
 footer {
+    width: 100%;
     font-size: 14px;
     margin-top: auto;
     color: white;

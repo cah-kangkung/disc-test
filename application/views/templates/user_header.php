@@ -32,10 +32,10 @@
                             <a class="nav-link" href="<?php echo site_url(); ?>disc">DISC</a>
                         </li>
                         <li class="nav-item <?php echo ($this->uri->segment(1) == 'pricing' ? 'active' : ''); ?>">
-                            <a class="nav-link" href="<?php echo site_url(); ?>pricing">TEST</a>
+                            <a class="nav-link" href="<?php echo site_url(); ?>pricing">TES</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url(); ?>user_auth">Login</a>
+                            <a class="nav-link" href="<?php echo site_url(); ?>user_auth">Masuk</a>
                         </li>
                     </ul>
                 </div>

@@ -318,6 +318,6 @@ class User_auth extends CI_Controller
 
     public function accessBlocked()
     {
-        $this->load->view('user_auth/blocked');
+        $this->load->view('auth/blocked');
     }
 }
